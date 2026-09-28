@@ -1,0 +1,3 @@
+cost_model,as_of,btc_close,liquidated,in_position,remaining_mark_usdt,qty,avg_entry,unrealized_usdt,mr_pct,start_equity_usdt,isolated,idle_usdt,if_flatten_today_usdt
+A_optimistic,2026-09-28 01:36:59.999000+00:00,0.09647,False,False,29138.48291872465,0.0,,0.0,0.0,10000.0,True,29138.48291872465,29138.48291872465
+B_decision,2026-09-28 01:36:59.999000+00:00,0.09647,False,False,28801.287988122775,0.0,,0.0,0.0,10000.0,True,28801.287988122775,28801.287988122775

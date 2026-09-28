@@ -1,0 +1,31 @@
+---
+description: Failed and retired strategy inventory — do not revive without a new spec
+alwaysApply: true
+---
+
+# Killed and retired ideas
+
+Treat these as **closed**. A new experiment needs a **different frozen spec** and a **positive fee-inclusive** result. Do not “nudge parameters.”
+
+## Measured KILL
+
+- **V1–V4 adaptive 5m**: ADX-gated VWAP/EMA pullback + BB/RSI fade. Trend churned fees; range still lost. Next *same-family* idea (if any) is maker-only execution realism, not more indicators (`research/RESULTS.md`).
+- **B1 15m / B2 1h** trend pullback: scarce signals, long holds, negative train P&L, empty validate/holdout (`research/RESULTS_HTF.md`).
+- **Grid C**: 24h VWAP ±3%, 10 levels/side, 4h ADX on/off. Grid-on and flatten both lost (`research/RESULTS_GRID.md`).
+- **E1 15m rejection fade**: 12h range-break + rejection, 2R, 60m cap. Sparse (~2.5 trades/week) but Cost B expectancy negative in every split (`research/RESULTS_E1.md`). Do not add indicators.
+- **F1 leveraged DCA**: technical-limit long basket, 3% MR cap, hold to +2% avg. ~98% TP then **one liquidation** wiped the book; validate/holdout empty (`research/RESULTS_DCA.md`). Separate product; do not retune or wire into `main.py`.
+- **F2 DCA 1% MR**: same as F1 with post-fill MR ≤ 1%. Train looked strong; **validate still liquidated** (`research/RESULTS_DCA_F2.md`). Do not retune.
+- **F3 DCA 50% equity stop**: F2 plus flatten at 50% of basket-start wallet. No liquidation; Cost B validate/holdout still negative (`research/RESULTS_DCA_F3.md`). Do not retune.
+- **F6 DCA 1% MR + SL80, fixed $10k clip**: frozen (`research/RESULTS_DCA_F6.md`). Do not retune.
+- **F7 DCA step-up to $20k clip**: frozen (`research/RESULTS_DCA_F7.md`). Do not retune.
+- **BTC/ETH gap-reversion** (`research/main-gap-fading.py`, `research/backtest_gap_reversion*.py`).
+- **1–30m / volume breakout**, **15m impulse-fade / dump-fade**, RSI/BB/EMA/VWAP 5m scripts ranked in `research/backtest_scalp_comparison.py`.
+
+## Not a live candidate
+
+- **D1 daily Donchian 20/10** spot long-only: INCONCLUSIVE (holdout n<8). Validate lost. Not a scalp.
+- **Daily SMA50** long-or-flat: historical pass, paper-only, multi-day → out of bot scope.
+
+## If implementing later
+
+Reuse `binance_client.py` / `trade_log.py`. Both legs (if pairs) must submit, confirm fills, cancel/flatten partials. Reduce-only exits must fill before resetting state. Startup: query account first; flatten only known **testnet** exposure. Persist UTC times, orders, fills, bid/ask, gross/fees/net to `data/events.csv`.

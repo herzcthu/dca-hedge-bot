@@ -1,0 +1,3 @@
+cost_model,risk_exit,liquidations,baskets_before_liq,pnl_before_liq_usdt,equity_before_doomed_usdt,liq_basket_pnl_usdt,liq_fees_usdt,ending_usdt,doomed_entry,liq_time,doomed_hold_days,days_first_entry_to_liq,days_last_tp_to_liq,last_tp_time
+A_optimistic,,0,60,6333.305360284224,16333.305360284223,0.0,0.0,16333.305360284223,,,0.0,0.0,0.0,
+B_decision,,0,60,6328.266931649768,16328.266931649767,0.0,0.0,16328.266931649767,,,0.0,0.0,0.0,

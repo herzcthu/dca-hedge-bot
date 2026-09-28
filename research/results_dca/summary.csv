@@ -1,0 +1,7 @@
+product,cost_model,split,baskets,net_profit_usdt,ending_equity_usdt,net_profit_pct,profit_factor,win_rate,avg_hold_hours,avg_fills,max_dd_pct,expectancy_usdt,fees_pct_start_equity,liquidations,tp_exits,emergency_exits,mtm_exits,time_in_market_pct,max_mr,sharpe_ann
+F1_dca_leverage,A_optimistic,train,41,-6431.2028522221735,3568.7971477778265,-64.31202852222174,0.8545963858857014,97.5609756097561,46.75609728319784,2.658536585365854,100.0,-156.85860615176034,4.808075999674397,1,40,0,0,14.349089796542758,100.0,-0.07789562157230417
+F1_dca_leverage,A_optimistic,validate,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0.0,100.0,0.0
+F1_dca_leverage,A_optimistic,holdout,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0.0,100.0,0.0
+F1_dca_leverage,B_decision,train,41,-6454.176791722937,3545.823208277063,-64.54176791722938,0.8537850907668637,97.5609756097561,46.75609728319784,2.658536585365854,100.0,-157.41894613958382,5.026192657407238,1,40,0,0,14.349089796542758,100.0,-0.0786981195299927
+F1_dca_leverage,B_decision,validate,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0.0,100.0,0.0
+F1_dca_leverage,B_decision,holdout,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0.0,100.0,0.0

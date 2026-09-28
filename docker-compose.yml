@@ -1,0 +1,37 @@
+services:
+  btc-eth-hedge:
+    build: .
+    restart: unless-stopped
+    user: "${HOST_UID:-1004}:${HOST_GID:-1004}"
+    env_file:
+      - .env
+    environment:
+      DRY_RUN: "${DRY_RUN:-true}"
+      MPLCONFIGDIR: "/tmp/matplotlib"
+      PYTHONPYCACHEPREFIX: "/tmp/pycache"
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    volumes:
+      - ./keys:/app/keys:ro
+      - ./data:/app/data
+
+  # One-off research. Does not replace or stop btc-eth-hedge.
+  # docker compose --profile backtest run --rm --no-deps dca-backtest
+  dca-backtest:
+    build: .
+    profiles: ["backtest"]
+    user: "${HOST_UID:-1004}:${HOST_GID:-1004}"
+    env_file:
+      - .env
+    environment:
+      MPLCONFIGDIR: "/tmp/matplotlib"
+      PYTHONPYCACHEPREFIX: "/tmp/pycache"
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    working_dir: /app/research
+    volumes:
+      - ./research:/app/research
+    command: ["python", "-u", "-m", "experiments.dca.run_isolated"]
+

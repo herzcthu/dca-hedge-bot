@@ -1,0 +1,7 @@
+product,cost_model,split,baskets,net_profit_usdt,ending_equity_usdt,net_profit_pct,profit_factor,win_rate,avg_hold_hours,avg_fills,max_dd_pct,expectancy_usdt,fees_pct_start_equity,liquidations,tp_exits,sl50_exits,emergency_exits,mtm_exits,time_in_market_pct,max_mr,sharpe_ann
+G1_ETH_coinm,A_optimistic,train,94,-5117.808786341273,4882.191213658727,-51.17808786341273,0.7142389716218533,96.80851063829788,98.56382950945626,2.6702127659574466,100.0,-54.4447743227795,1.49756,1,91,2,0,0,70.14685635612666,100.0,-0.26972106556366165
+G1_ETH_coinm,A_optimistic,validate,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0,0.0,100.0,0.0
+G1_ETH_coinm,A_optimistic,holdout,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0,0.0,100.0,0.0
+G1_ETH_coinm,B_decision,train,93,-5160.2055697286,4839.7944302714,-51.602055697286,0.7110520418107557,96.7741935483871,99.61290294802866,2.6881720430107525,100.0,-55.486081394931176,1.54022,1,90,2,0,0,70.14685635612666,100.0,-0.2717586975297255
+G1_ETH_coinm,B_decision,validate,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0,0.0,100.0,0.0
+G1_ETH_coinm,B_decision,holdout,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0,0.0,100.0,0.0

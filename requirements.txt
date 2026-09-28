@@ -1,0 +1,7 @@
+requests
+cryptography
+websocket-client
+pandas
+numpy
+matplotlib
+tabulate

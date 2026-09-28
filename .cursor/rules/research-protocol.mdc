@@ -1,0 +1,41 @@
+---
+description: How to design, freeze, and judge new scalp backtests
+alwaysApply: true
+---
+
+# Research protocol
+
+## Bot scope
+
+Candidates for this bot must hold **minutes to one hour**. Multi-day systems may be researched in isolation but **cannot** be wired into `main.py`.
+
+Do **not** retune killed specs. Freeze a **new** spec in a new `research/experiments/<name>/` package (or a new script under `research/` if tiny). Do not mutate `research/strategy.py`, HTF/grid/D1 engines, or revive: gap-reversion / pair legs, 1–30m breakout, volume breakout, 15m impulse-fade.
+
+D2 (4h Donchian + compression) is **not** allowed: D1 validate Cost B expectancy is negative. Stop that breakout line unless the user explicitly overrides.
+
+E1 (`research/experiments/e1/`) is KILL. Do not retune it.
+
+F1–F8 leveraged USD-M DCA are closed or frozen. G1 is **Coin-M BTCUSD_PERP, F6 rules, $10k of BTC start** (`research/experiments/dca/backtest_dca_coinm.py`). None may go into `main.py`.
+
+## Shared conventions
+
+- Public Binance klines only. USD-M perps: `https://fapi.binance.com`. Coin-M: `https://dapi.binance.com`. D1 used **spot** (no funding).
+- Splits (UTC): train `2024-01-01`–`2025-07-01`, validate `2025-07-01`–`2026-03-01`, holdout `2026-03-01`+.
+- Signal on **completed** bars; fill **next open** (or documented limit-touch). Align HTF features with completed candles only (no lookahead).
+- Cost **B / decision model** is the pass gate. Cost A is optimistic baseline only.
+- Perp funding placeholder: `-0.01%` per 00:00/08:00/16:00 UTC crossing unless real funding is fetched.
+- Never treat mark-price gaps as P&L. Size from stop distance; skip unsizable trades.
+- Start equity `$10,000` unless the spec says otherwise.
+
+## Pass / paper / kill
+
+- Taker scalp: **avg net P&L per trade > 0** after all fees/slippage, with the fee model written in the spec.
+- Adaptive 5m also required Cost B holdout PF ≥ 1.15 — it failed; do not weaken that bar for a revival of V1–V4.
+- Thin holdout (too few trades) → **INCONCLUSIVE**, not PASS.
+- Kill means: do not paper, do not ship, do not add indicators to “fix” it.
+
+## Workflow
+
+1. Write frozen rules (symbol, TF, entry/exit, costs, hold cap) before coding.
+2. Implement isolated experiment; write `research/results_*/` + `research/RESULTS_*.md`. The backtest container working directory is `research/`, so code keeps relative paths like `data/dca_um` and `results_dca_run_1m_so_reclaim/`.
+3. After code edits: `python3 -m py_compile` on touched modules and `docker compose config`. Keep the compose service **stopped** if live-order logic changes.

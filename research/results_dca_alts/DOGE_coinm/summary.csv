@@ -1,0 +1,7 @@
+product,cost_model,split,baskets,net_profit_usdt,ending_equity_usdt,net_profit_pct,profit_factor,win_rate,avg_hold_hours,avg_fills,max_dd_pct,expectancy_usdt,fees_pct_start_equity,liquidations,tp_exits,sl50_exits,emergency_exits,mtm_exits,time_in_market_pct,max_mr,sharpe_ann
+G1_DOGE_coinm,A_optimistic,train,97,-6611.887510501108,3388.1124894988916,-66.11887510501109,0.6982273220177992,96.90721649484536,42.20618528923253,2.9072164948453607,100.0,-68.16378876805267,1.8042000000000002,1,94,2,0,0,30.572127887410126,100.0,-0.5801005968899552
+G1_DOGE_coinm,A_optimistic,validate,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0,0.0,100.0,0.0
+G1_DOGE_coinm,A_optimistic,holdout,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0,0.0,100.0,0.0
+G1_DOGE_coinm,B_decision,train,98,-6449.390362790606,3550.6096372093944,-64.49390362790606,0.7078026575061716,96.93877551020408,41.62244870181405,2.9285714285714284,100.0,-65.81010574276128,1.90623,1,95,2,0,0,30.44974759063791,100.0,-0.5711618839578779
+G1_DOGE_coinm,B_decision,validate,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0,0.0,100.0,0.0
+G1_DOGE_coinm,B_decision,holdout,0,0.0,10000.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0,0,0,0,0,0.0,100.0,0.0

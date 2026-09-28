@@ -1,0 +1,30 @@
+---
+description: Repo map and current status for the crypto scalp research bot
+alwaysApply: true
+---
+
+# Project map
+
+This repo is a **research harness** for BTCUSDT scalp ideas plus a **strategy-agnostic** Binance USD-M futures client. There is **no approved live strategy**. `main.py` must stay inert until a **minutes-to-one-hour** scalp passes a frozen, fee-inclusive backtest (Cost B / decision model, avg net P&L > 0).
+
+## Live vs research
+
+- Live path: `main.py` + `dca_rules.py` — **one USD-M symbol** (default `DOGEUSDT`). Docker `CMD` → `.env` + `keys/` Ed25519. Keep `BASE_URL` on testnet unless the user confirms production risk. Do not import `experiments.dca`.
+- Reusable infra (do not assume a second symbol): `binance_client.py`, `trade_log.py`.
+- Retired live pair scalp: `research/main-gap-fading.py` refuses unless `ALLOW_RETIRED_GAP_FADING=true`. Do not revive it.
+- Research never loads credentials, starts the service, or places orders. Frozen F1–F8 / G1 stay in `research/experiments/dca`. The backtest container working directory is `research/`, so the import name stays `experiments.dca`.
+
+## Code layout
+
+| Area | Path | Status |
+|---|---|---|
+| Adaptive 5m dual-engine | `research/config.py` `research/data_loader.py` `research/indicators.py` `research/strategy.py` `research/backtest.py` `research/report.py` | **KILL** (`research/RESULTS.md`) |
+| HTF pullbacks B1/B2 | `research/experiments/htf/` | **KILL** (`research/RESULTS_HTF.md`) |
+| Inventory grid C | `research/experiments/grid/` | **KILL** (`research/RESULTS_GRID.md`) |
+| Daily Donchian D1 | `research/experiments/d1/` | **INCONCLUSIVE** thin holdout (`research/RESULTS_D1.md`); not a scalp |
+| Legacy 5m idea scripts | `research/backtest_btc_*.py`, `research/backtest_gap_*.py`, `research/backtest_scalp_comparison.py` | failed fee-inclusive tests |
+| Daily SMA50 | `research/backtest_btc_daily_sma50.py` | historical pass, **out of scope** (multi-day hold) |
+
+Caches: `research/data/adaptive_scalper/`, `research/data/htf/`, `research/data/d1/`. Artifacts: `research/results/`, `research/results_htf/`, `research/results_grid/`, `research/results_d1/`. Docker service name is leftover `btc-eth-hedge`. Live `data/` holds only `events.csv` and `dca_bot_state.json`.
+
+Operational constraints live in `AGENTS.md`. Do not log keys, signatures, or signed URLs.
